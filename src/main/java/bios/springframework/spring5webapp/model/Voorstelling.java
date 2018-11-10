@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -31,9 +32,11 @@ public class Voorstelling {
     @JoinColumn(name = "zaal_id")
     private Zaal zalen;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "tijden_id")
-    private Tijden begintijden;
+    @Column(name = "datum")
+    private Date datum;
+
+    @Column(name = "tijd")
+    private String tijd;
 
     public Voorstelling() {
 
@@ -70,14 +73,17 @@ public class Voorstelling {
         this.zalen = zalen;
     }
 
-    @JsonGetter(value = "Tijd")
-    public Tijden getBegintijden() {
-        return begintijden;
+    @JsonGetter(value = "Datum")
+    public Date getDatum() {
+        return datum;
     }
 
-    public void setBegintijden(Tijden begintijden) {
-        this.begintijden = begintijden;
+    @JsonGetter(value =  "Tijd")
+    public String getTijd() {
+        return tijd;
     }
+
+
 
     }
 
