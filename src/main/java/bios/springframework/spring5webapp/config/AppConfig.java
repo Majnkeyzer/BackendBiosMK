@@ -54,31 +54,27 @@ public class AppConfig {
         // for sanity's sake, log this info
         // just to make sure we are REALLY reading data from properties file
 
-//        logger.info(">>> jdbc:sqlserver://localhost:1433;databaseName=BioscoopData=" + env.getProperty("jdbc:sqlserver://localhost:1433;databaseName=BioscoopData"));
-//        logger.info(">>> TestGebruiker=" + env.getProperty("TestGebruiker"));
-//
-//
-//        // set database connection props
-//
-//        securityDataSource.setJdbcUrl(env.getProperty("jdbc.url"));
-//        securityDataSource.setUser(env.getProperty("jdbc.user"));
-//        securityDataSource.setPassword(env.getProperty("jdbc.password"));
-//
-//        // set connection pool props
-//
-//        securityDataSource.setInitialPoolSize(
-//                getIntProperty("connection.pool.initialPoolSize"));
-//
-//        securityDataSource.setMinPoolSize(
-//                getIntProperty("connection.pool.minPoolSize"));
-//
-//        securityDataSource.setMaxPoolSize(
-//                getIntProperty("connection.pool.maxPoolSize"));
-//
-//        securityDataSource.setMaxIdleTime(
-//                getIntProperty("connection.pool.maxIdleTime"));
+        logger.info(">>> jdbc:sqlserver://localhost:1433;databaseName=BioscoopData=" + env.getProperty("spring.datasource.url"));
+        logger.info(">>> TestGebruiker=" + env.getProperty("spring.datasource.username"));
+
+
+        // set database connection props
+
+        securityDataSource.setInitialPoolSize(
+                getIntProperty("connection.pool.initialPoolSize"));
+
+        securityDataSource.setMinPoolSize(
+                getIntProperty("connection.pool.minPoolSize"));
+
+        securityDataSource.setMaxPoolSize(
+                getIntProperty("connection.pool.maxPoolSize"));
+
+        securityDataSource.setMaxIdleTime(
+                getIntProperty("connection.pool.maxIdleTime"));
 
         return securityDataSource;
+
+
     }
 
     // need a helper method
